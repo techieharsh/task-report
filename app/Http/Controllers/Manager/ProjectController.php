@@ -65,8 +65,7 @@ class ProjectController extends Controller
     {
         $project->update($request->all());
 
-        return redirect()->route('manager.projects.index')
-            ->with('success', 'Project updated');
+        return redirect()->route('manager.projects.index')->with('success', 'Project updated successfully');
     }
 
     /**
@@ -76,6 +75,6 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return back()->with('success', 'Project deleted');
+        return back()->with('success', 'Project deleted successfully');
     }
 }

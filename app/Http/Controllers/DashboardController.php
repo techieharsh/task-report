@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Task;
 
 class DashboardController extends Controller
 {
@@ -16,12 +17,14 @@ class DashboardController extends Controller
             $completed = Task::where('status', 'completed')->count();
 
             return view('dashboard.manager', compact(
-                'projects'
+                'projects',
+                'tasks',
+                'completed'
             ));
         }
 
-        // $tasks = auth()->user()->tasks;
+        $tasks = auth()->user()->tasks;
 
-        // return view('dashboard.employee', compact('tasks'));
+        return view('dashboard.employee', compact('tasks'));
     }
 }
